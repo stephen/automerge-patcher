@@ -1,8 +1,8 @@
-import { change, type Doc, from, Patch, next } from "@automerge/automerge";
-import { patch as applyPatch } from "../src";
+import { Patch, change, from, next, type Doc } from "@automerge/automerge";
 import { beforeEach, describe, expect, test } from "vitest";
-import { documentData } from "./data";
+import { patchObject as applyPatch } from "../src";
 import { getProperty } from "../src/helpers";
+import { documentData } from "./data";
 
 describe("Applying Patches", () => {
   let doc: Doc<typeof documentData>;
@@ -30,7 +30,7 @@ describe("Applying Patches", () => {
         expected: "hello there world",
       },
       {
-        name: "delete text",
+        name: "delete text 1",
         patch: {
           action: "del",
           path: ["text", 2],
